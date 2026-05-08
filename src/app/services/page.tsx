@@ -45,60 +45,67 @@ export default function ServicesPage() {
   const [open, setOpen] = useState<string | null>("01");
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       <ArrowCursor />
       <Nav />
 
-      <section className="pt-44 pb-20 px-6 relative overflow-hidden">
+      <section className="pt-52 pb-32 px-6 relative overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30 animate-grid" />
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[120px] animate-float" />
+        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-accent/10 blur-[150px] animate-float" />
         <div className="relative max-w-7xl mx-auto">
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 animate-rise">[What we do]</p>
-          <h1 className="font-display font-black text-[clamp(3rem,12vw,12rem)] tracking-[-0.04em] leading-[0.85] animate-rise" style={{ animationDelay: "0.1s" }}>
+          <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-accent mb-8 animate-rise">[ What we do ]</p>
+          <h1 className="font-display font-black text-[clamp(3.5rem,13vw,13rem)] tracking-[-0.05em] leading-[0.82] animate-rise" style={{ animationDelay: "0.1s" }}>
             Four<br/>practices.<br/><span className="text-stroke">One studio.</span>
           </h1>
         </div>
       </section>
 
-      <section className="px-6 pb-32">
+      <section className="px-6 pb-44">
         <div className="max-w-7xl mx-auto border-t border-border">
           {services.map((s, i) => {
             const isOpen = open === s.n;
             return (
-              <Reveal key={s.n} delay={i * 80}>
-                <div className="border-b border-border">
+              <Reveal key={s.n} delay={i * 100}>
+                <div className={`border-b border-border transition-all duration-700 ${isOpen ? "bg-card/20 px-8 rounded-[2rem] my-4" : ""}`}>
                   <button
                     onClick={() => setOpen(isOpen ? null : s.n)}
-                    className="w-full grid grid-cols-12 gap-4 py-8 md:py-10 items-center text-left group cursor-pointer"
-                    data-cursor="hover"
+                    className="w-full grid grid-cols-12 gap-6 py-12 md:py-16 items-center text-left group cursor-pointer focus:outline-none"
                   >
-                    <span className="col-span-1 font-mono text-xs text-muted-foreground">{s.n}</span>
+                    <span className="col-span-1 font-mono text-xs text-muted-foreground opacity-50">{s.n}</span>
                     <div className="col-span-9 md:col-span-7">
-                      <h3 className="font-display font-bold text-3xl md:text-5xl tracking-tighter group-hover:text-accent transition-colors">{s.title}</h3>
+                      <h3 className="font-display font-bold text-4xl md:text-6xl tracking-tighter group-hover:text-accent transition-all duration-500 group-hover:translate-x-2">{s.title}</h3>
                     </div>
-                    <span className="hidden md:block col-span-3 font-mono text-xs text-muted-foreground">{s.sub}</span>
-                    <span className="col-span-2 md:col-span-1 flex justify-end">
-                      <span className={`w-10 h-10 rounded-full border border-border flex items-center justify-center transition-transform duration-500 ${isOpen ? "rotate-90 bg-accent text-background border-accent" : "group-hover:border-foreground"}`}>
-                        <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                      </span>
-                    </span>
+                    <span className="hidden md:block col-span-3 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{s.sub}</span>
+                    <div className="col-span-2 md:col-span-1 flex justify-end">
+                      <div className={`w-14 h-14 rounded-full border border-border flex items-center justify-center transition-all duration-700 ${isOpen ? "rotate-90 bg-accent text-background border-accent" : "group-hover:border-accent group-hover:scale-110"}`}>
+                        <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                      </div>
+                    </div>
                   </button>
 
-                  <div className={`grid transition-all duration-700 ease-out ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                  <div className={`grid transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${isOpen ? "grid-rows-[1fr] opacity-100 pb-16" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="overflow-hidden">
-                      <div className="grid md:grid-cols-12 gap-8 pb-12 pt-2">
-                        <div className="md:col-start-2 md:col-span-6">
-                          <p className="text-lg text-muted-foreground leading-relaxed mb-6">{s.body}</p>
-                          <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">Starting at <span className="text-accent">{s.starting}</span></p>
+                      <div className="grid lg:grid-cols-12 gap-12 pt-4">
+                        <div className="lg:col-start-2 lg:col-span-6">
+                          <p className="text-xl text-muted-foreground leading-relaxed mb-10 text-balance">{s.body}</p>
+                          <div className="inline-flex items-center gap-4 bg-background/50 border border-border px-6 py-3 rounded-full">
+                             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Investment</span>
+                             <span className="font-display font-bold text-xl text-accent">Starting at {s.starting}</span>
+                          </div>
                         </div>
-                        <ul className="md:col-span-4 space-y-3">
-                          {s.deliverables.map((d) => (
-                            <li key={d} className="flex items-center gap-3 text-sm">
-                              <svg viewBox="0 0 24 24" className="w-4 h-4 text-accent shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                              {d}
-                            </li>
-                          ))}
-                        </ul>
+                        <div className="lg:col-span-4 lg:col-start-9">
+                          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-6">Deliverables</p>
+                          <ul className="space-y-4">
+                            {s.deliverables.map((d) => (
+                              <li key={d} className="flex items-center gap-4 text-sm group/item">
+                                <div className="w-8 h-8 rounded-full border border-border flex items-center justify-center group-hover/item:border-accent transition-colors">
+                                    <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-accent" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                </div>
+                                <span className="group-hover/item:text-foreground transition-colors">{d}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>

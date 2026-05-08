@@ -27,55 +27,75 @@ export default function WorkPage() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background text-foreground">
             <ArrowCursor />
             <Nav />
 
             {/* HERO */}
-            <section className="pt-44 pb-20 px-6 relative overflow-hidden">
+            <section className="pt-52 pb-32 px-6 relative overflow-hidden">
                 <div className="absolute inset-0 grid-bg opacity-30 animate-grid" />
                 <div className="relative max-w-7xl mx-auto">
-                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground mb-6 animate-rise">[Selected Work · 2024 — 2026]</p>
-                    <h1 className="font-display font-black text-[clamp(3rem,12vw,12rem)] tracking-[-0.04em] leading-[0.85] animate-rise" style={{ animationDelay: "0.1s" }}>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-accent mb-8 animate-rise">[ Selected Work · 2024 — 2026 ]</p>
+                    <h1 className="font-display font-black text-[clamp(3.5rem,13vw,13rem)] tracking-[-0.05em] leading-[0.82] animate-rise" style={{ animationDelay: "0.1s" }}>
                         Things we<br /><span className="shimmer-text italic font-light">shipped.</span>
                     </h1>
                 </div>
             </section>
 
             {/* PROJECTS */}
-            <section className="relative px-6 pb-32">
+            <section className="relative px-6 pb-44">
                 <div className="max-w-7xl mx-auto border-t border-border">
                     {projects.map((p, i) => (
-                        <Reveal key={p.n} delay={i * 60}>
+                        <Reveal key={p.n} delay={i * 80}>
                             <Link
                                 href="/contact"
                                 onMouseEnter={() => setHovered(p.n)}
                                 onMouseLeave={() => setHovered(null)}
-                                className="group grid grid-cols-12 gap-4 py-10 border-b border-border items-center hover:pl-6 transition-all duration-500 cursor-pointer"
+                                className="group grid grid-cols-12 gap-6 py-12 md:py-20 border-b border-border items-center hover:px-8 transition-all duration-700 cursor-pointer relative overflow-hidden"
                             >
-                                <span className="col-span-1 font-mono text-xs text-muted-foreground">{p.n}</span>
-                                <div className="col-span-5 md:col-span-4">
-                                    <h3 className="font-display font-bold text-3xl md:text-5xl tracking-tighter group-hover:text-accent transition-colors">{p.title}</h3>
+                                <div className="absolute inset-0 bg-accent/0 group-hover:bg-accent/[0.02] transition-colors duration-700" />
+                                
+                                <span className="col-span-1 font-mono text-xs text-muted-foreground opacity-50 group-hover:opacity-100 transition-opacity">{p.n}</span>
+                                
+                                <div className="col-span-11 md:col-span-5">
+                                    <h3 className="font-display font-bold text-4xl md:text-7xl tracking-tighter group-hover:text-accent transition-all duration-700 group-hover:translate-x-2">
+                                        {p.title}
+                                    </h3>
                                 </div>
-                                <p className="col-span-6 md:col-span-4 text-sm text-muted-foreground">{p.desc}</p>
-                                <span className="hidden md:block col-span-2 font-mono text-xs text-muted-foreground">{p.cat}</span>
-                                <span className="hidden md:block col-span-1 font-mono text-xs text-muted-foreground text-right">{p.year}</span>
+                                
+                                <p className="col-span-12 md:col-span-3 text-lg text-muted-foreground leading-relaxed mt-4 md:mt-0 group-hover:text-foreground transition-colors duration-700">
+                                    {p.desc}
+                                </p>
+                                
+                                <div className="hidden md:flex col-span-2 flex-col items-end gap-1">
+                                    <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{p.cat}</span>
+                                </div>
+                                
+                                <span className="hidden md:block col-span-1 font-mono text-sm text-accent text-right font-bold">{p.year}</span>
+                                
+                                <div className="col-span-12 md:hidden mt-6 flex justify-between items-center">
+                                     <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{p.cat}</span>
+                                     <span className="font-mono text-sm text-accent font-bold">{p.year}</span>
+                                </div>
                             </Link>
                         </Reveal>
                     ))}
                 </div>
 
-                {/* Cursor preview card */}
+                {/* Floating Preview Card */}
                 {hovered && (
                     <div
-                        className="hidden md:block fixed pointer-events-none z-40 transition-transform duration-100"
-                        style={{ left: pos.x + 24, top: pos.y + 24 }}
+                        className="hidden lg:block fixed pointer-events-none z-50 transition-transform duration-200 ease-out"
+                        style={{ left: pos.x + 40, top: pos.y - 100 }}
                     >
                         <div
-                            className="w-64 h-40 rounded-2xl flex items-center justify-center font-display font-bold text-2xl animate-scale-in"
-                            style={{ background: `linear-gradient(135deg, ${projects.find(p => p.n === hovered)?.color}, oklch(0.2 0.02 260))` }}
+                            className="w-80 h-52 rounded-[2rem] flex items-center justify-center font-display font-bold text-3xl animate-scale-in glass-card border-2 border-accent/20 overflow-hidden"
                         >
-                            {projects.find(p => p.n === hovered)?.title}
+                            <div className="absolute inset-0 opacity-20" style={{ backgroundColor: projects.find(p => p.n === hovered)?.color }} />
+                            <div className="relative z-10 text-center px-6">
+                                <p className="text-xs font-mono uppercase tracking-[0.3em] mb-2 opacity-60">View Case Study</p>
+                                {projects.find(p => p.n === hovered)?.title}
+                            </div>
                         </div>
                     </div>
                 )}
