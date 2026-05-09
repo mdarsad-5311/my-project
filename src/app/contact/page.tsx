@@ -44,11 +44,25 @@ export default function ContactPage() {
             return;
         }
 
-        // Mock send
-        await new Promise((r) => setTimeout(r, 2000));
-        setSent(true);
-        setLoading(false);
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        // Formspree submission
+        try {
+            const response = await fetch("https://formspree.io/f/maqvpaoq", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (response.ok) {
+                setSent(true);
+            } else {
+                setErrors({ message: "Something went wrong. Please try again or email us directly." });
+            }
+        } catch (_err) {
+            setErrors({ message: "Submission failed. Please check your connection." });
+        } finally {
+            setLoading(false);
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
     };
 
     return (

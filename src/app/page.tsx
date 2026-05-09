@@ -133,21 +133,23 @@ export default function Home() {
               { n: "04", t: "Cloud & DevOps", d: "Scalable infrastructure on Cloudflare, Vercel, AWS. Observability built-in.", tags: ["Workers", "Postgres", "CI/CD"] },
             ].map((s, i) => (
               <Reveal key={s.n} delay={i * 100}>
-                <div className="glass-card group relative p-12 lg:p-16 rounded-[2rem] cursor-pointer h-full">
-                  <div className="flex items-start justify-between mb-16">
-                    <span className="font-mono text-xs text-muted-foreground opacity-50">{s.n} / 04</span>
-                    <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
-                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-foreground group-hover:text-background transition-transform duration-500 group-hover:rotate-45" fill="none" stroke="currentColor" strokeWidth="3"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                <Link href="/services" className="block h-full">
+                  <div className="glass-card group relative p-12 lg:p-16 rounded-[2rem] cursor-pointer h-full">
+                    <div className="flex items-start justify-between mb-16">
+                      <span className="font-mono text-xs text-muted-foreground opacity-50">{s.n} / 04</span>
+                      <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-foreground group-hover:text-background transition-transform duration-500 group-hover:rotate-45" fill="none" stroke="currentColor" strokeWidth="3"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                      </div>
+                    </div>
+                    <h3 className="font-display font-bold text-4xl lg:text-5xl tracking-tight mb-6 group-hover:text-accent transition-colors">{s.t}</h3>
+                    <p className="text-muted-foreground text-lg mb-12 max-w-md leading-relaxed">{s.d}</p>
+                    <div className="flex flex-wrap gap-3">
+                      {s.tags.map((t) => (
+                        <span key={t} className="font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-border group-hover:border-accent/30 transition-colors">{t}</span>
+                      ))}
                     </div>
                   </div>
-                  <h3 className="font-display font-bold text-4xl lg:text-5xl tracking-tight mb-6 group-hover:text-accent transition-colors">{s.t}</h3>
-                  <p className="text-muted-foreground text-lg mb-12 max-w-md leading-relaxed">{s.d}</p>
-                  <div className="flex flex-wrap gap-3">
-                    {s.tags.map((t) => (
-                      <span key={t} className="font-mono text-[10px] uppercase tracking-widest px-4 py-2 rounded-full border border-border group-hover:border-accent/30 transition-colors">{t}</span>
-                    ))}
-                  </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -171,16 +173,18 @@ export default function Home() {
               { n: "04", t: "Evolve", d: "We stay on as a partner — measuring, iterating, scaling what works." },
             ].map((p, i) => (
               <Reveal key={p.n} delay={i * 100}>
-                <div className="group glass-card p-10 md:p-14 rounded-[2rem] grid md:grid-cols-[140px_1fr_auto] gap-12 items-center cursor-pointer">
-                  <span className="font-mono text-xl text-accent font-bold">— {p.n}</span>
-                  <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-20">
-                    <h3 className="font-display font-bold text-4xl md:text-6xl tracking-tighter min-w-[300px] group-hover:translate-x-4 transition-transform duration-700">{p.t}</h3>
-                    <p className="text-muted-foreground text-lg max-w-md leading-relaxed">{p.d}</p>
+                <Link href="/studio">
+                  <div className="group glass-card p-10 md:p-14 rounded-[2rem] grid md:grid-cols-[140px_1fr_auto] gap-12 items-center cursor-pointer">
+                    <span className="font-mono text-xl text-accent font-bold">— {p.n}</span>
+                    <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-20">
+                      <h3 className="font-display font-bold text-4xl md:text-6xl tracking-tighter min-w-[300px] group-hover:translate-x-4 transition-transform duration-700">{p.t}</h3>
+                      <p className="text-muted-foreground text-lg max-w-md leading-relaxed">{p.d}</p>
+                    </div>
+                    <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-700">
+                      <svg viewBox="0 0 24 24" className="w-6 h-6 text-foreground group-hover:text-background transition-all duration-700" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+                    </div>
                   </div>
-                  <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-700">
-                    <svg viewBox="0 0 24 24" className="w-6 h-6 text-foreground group-hover:text-background transition-all duration-700" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-                  </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -214,10 +218,21 @@ export default function Home() {
             <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-accent mb-12 animate-rise">[03] Manifesto</p>
           </Reveal>
           <Reveal delay={200}>
-            <p className="font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.03em] leading-[1.05] text-balance font-bold">
+            <p className="font-display text-4xl md:text-6xl lg:text-7xl tracking-[-0.03em] leading-[1.05] text-balance font-bold mb-20">
               We believe software should feel like an <span className="italic text-accent shimmer-text">arrow</span> — light, sharp, and aimed at exactly one thing.{" "}
               <span className="text-stroke">No bloat. No theatre.</span> Just craft, shipped on time.
             </p>
+          </Reveal>
+          <Reveal delay={400}>
+            <Magnetic>
+              <Link
+                href="/contact"
+                className="group relative inline-flex items-center gap-8 px-16 py-8 rounded-full bg-foreground text-background font-black text-xl hover:scale-105 transition-all"
+              >
+                Let&apos;s build your vision
+                <svg viewBox="0 0 24 24" className="w-8 h-8 group-hover:translate-x-3 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              </Link>
+            </Magnetic>
           </Reveal>
         </div>
       </section>
