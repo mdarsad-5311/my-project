@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Magnetic } from "./Magnetic";
 
 export function Footer() {
@@ -11,7 +10,7 @@ export function Footer() {
             <div className="relative max-w-7xl mx-auto px-6 pt-32 pb-12">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-16 mb-32">
                     <div className="max-w-2xl">
-                        <p className="font-mono text-xs uppercase tracking-[0.4em] text-accent mb-8 animate-rise">[ Let's build something ]</p>
+                        <p className="font-mono text-xs uppercase tracking-[0.4em] text-accent mb-8 animate-rise">[ Let&apos;s build something ]</p>
                         <h2 className="font-display font-bold text-6xl md:text-[9vw] lg:text-[120px] tracking-[-0.04em] leading-[0.85] mb-8">
                             Have an idea?<br />
                             <span className="shimmer-text">Point it forward.</span>
@@ -82,7 +81,7 @@ export function Footer() {
                 {/* Massive Outlined Marquee */}
                 <div className="relative py-20 pb-10 overflow-hidden select-none pointer-events-none">
                     <div className="whitespace-nowrap text-[22vw] font-display font-bold tracking-tighter text-stroke leading-none flex">
-                        <div className="animate-marquee-slow flex gap-20 px-10 text-white">
+                        <div className="animate-marquee-slow text-stroke flex gap-20 px-10 text-white">
                             <span>WHITE ARROW SOFTWARES → WHITE ARROW SOFTWARES → WHITE ARROW SOFTWARES → WHITE ARROW SOFTWARES → </span>
                             <span>WHITE ARROW SOFTWARES → WHITE ARROW SOFTWARES → WHITE ARROW SOFTWARES → WHITE ARROW SOFTWARES → </span>
                         </div>

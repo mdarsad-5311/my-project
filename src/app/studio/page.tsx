@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/Footer";
 import { ArrowCursor } from "../../components/ArrowCursor";
@@ -13,9 +15,24 @@ const principles = [
 ];
 
 const team = [
-  { name: "Aarav Mehta", role: "Founder · Engineering", bio: "10y building product. ex-Razorpay, ex-Atlassian." },
-  { name: "Ishita Rao", role: "Design · Motion", bio: "Brand & interaction. ex-Google, ex-Headspace." },
-  { name: "Kabir Singh", role: "AI · Infrastructure", bio: "ML systems. ex-Anthropic intern, IIT-B." },
+  { 
+    name: "Akif Khan", 
+    role: "Founder · Engineering", 
+    image: "/team/akif.png",
+    bio: "Visionary leader and lead architect. Specialized in high-performance cloud infrastructure and product strategy." 
+  },
+  { 
+    name: "Aditya Bachawe", 
+    role: "Lead Designer", 
+    image: "/team/aditya.png",
+    bio: "Master of aesthetics and interaction. Transforming complex requirements into intuitive, premium digital experiences." 
+  },
+  { 
+    name: "Rahul Hadpad", 
+    role: "System Engineer", 
+    image: "/team/rahul.png",
+    bio: "Core systems specialist. Focused on scalability, reliability, and the engineering behind seamless user experiences." 
+  },
 ];
 
 export default function StudioPage() {
@@ -93,23 +110,7 @@ export default function StudioPage() {
           </Reveal>
           <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
             {team.map((m, i) => (
-              <Reveal key={m.name} delay={i * 150}>
-                <div className="group cursor-pointer">
-                  <div className="aspect-[4/5] glass-card rounded-[3rem] mb-10 overflow-hidden relative flex items-center justify-center">
-                    <div className="absolute inset-0 bg-linear-to-br from-accent/0 to-accent/0 group-hover:from-accent/10 group-hover:to-transparent transition-all duration-1000" />
-                    <div className="font-display font-black text-[120px] text-stroke opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 select-none">
-                      {m.name.split(" ").map(n => n[0]).join("")}
-                    </div>
-                    <div className="absolute bottom-10 left-10 right-10 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-                         <div className="w-full h-px bg-accent/30 mb-4" />
-                         <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">Availability: High</p>
-                    </div>
-                  </div>
-                  <h3 className="font-display font-bold text-3xl tracking-tight mb-2">{m.name}</h3>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent mb-6">{m.role}</p>
-                  <p className="text-muted-foreground leading-relaxed text-balance">{m.bio}</p>
-                </div>
-              </Reveal>
+              <TeamMemberCard key={m.name} member={m} delay={i * 150} />
             ))}
           </div>
         </div>
@@ -117,5 +118,54 @@ export default function StudioPage() {
 
       <Footer />
     </div>
+  );
+}
+
+interface TeamMember {
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+}
+
+function TeamMemberCard({ member, delay }: { member: TeamMember, delay: number }) {
+  const [error, setError] = useState(false);
+
+  return (
+    <Reveal delay={delay}>
+      <div className="group cursor-pointer">
+        <div className="aspect-[4/5] glass-card rounded-[3rem] mb-10 overflow-hidden relative flex items-center justify-center bg-muted/20">
+          {/* Background Glow */}
+          <div className="absolute inset-0 bg-linear-to-br from-accent/0 to-accent/0 group-hover:from-accent/20 group-hover:to-transparent transition-all duration-1000" />
+          
+          {/* Image */}
+          {!error && member.image && (
+            <Image 
+              src={member.image} 
+              alt={member.name}
+              fill
+              className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000"
+              onError={() => setError(true)}
+              sizes="(max-width: 768px) 100vw, 33vw"
+            />
+          )}
+
+          {/* Initials Fallback */}
+          {(error || !member.image) && (
+            <div className="font-display font-black text-[120px] text-stroke opacity-20 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 select-none">
+              {member.name.split(" ").map((n: string) => n[0]).join("")}
+            </div>
+          )}
+
+          <div className="absolute bottom-10 left-10 right-10 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
+               <div className="w-full h-px bg-accent/30 mb-4" />
+               <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">Availability: Active</p>
+          </div>
+        </div>
+        <h3 className="font-display font-bold text-3xl tracking-tight mb-2 group-hover:text-accent transition-colors">{member.name}</h3>
+        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent mb-6">{member.role}</p>
+        <p className="text-muted-foreground leading-relaxed text-balance">{member.bio}</p>
+      </div>
+    </Reveal>
   );
 }

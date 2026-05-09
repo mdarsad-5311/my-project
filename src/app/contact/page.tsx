@@ -62,7 +62,7 @@ export default function ContactPage() {
                 <div className="relative max-w-7xl mx-auto">
                     <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-accent mb-8 animate-rise">[ Start a project ]</p>
                     <h1 className="font-display font-black text-[clamp(3.5rem,11vw,11rem)] tracking-[-0.05em] leading-[0.82] animate-rise" style={{ animationDelay: "0.1s" }}>
-                        Let's aim<br /><span className="shimmer-text italic font-light">together.</span>
+                        Let&apos;s aim<br /><span className="shimmer-text italic font-light">together.</span>
                     </h1>
                 </div>
             </section>
@@ -120,7 +120,7 @@ export default function ContactPage() {
                                             <svg viewBox="0 0 24 24" className="w-12 h-12" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                                         </div>
                                         <h2 className="font-display font-bold text-5xl md:text-6xl tracking-tighter mb-6">Arrow received.</h2>
-                                        <p className="text-muted-foreground text-xl max-w-sm mx-auto leading-relaxed">We've received your message and will get back to you soon. Looking forward to it!</p>
+                                        <p className="text-muted-foreground text-xl max-w-sm mx-auto leading-relaxed">We&apos;ve received your message and will get back to you soon. Looking forward to it!</p>
                                         <button onClick={() => setSent(false)} className="mt-12 text-accent font-mono text-xs uppercase tracking-widest hover:underline">Send another arrow</button>
                                     </div>
                                 ) : (

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Nav } from "../components/Nav";
 import { Footer } from "../components/Footer";
 import { ArrowCursor } from "../components/ArrowCursor";
 import { Reveal } from "../components/Reveal";
@@ -10,20 +9,20 @@ import Link from "next/link";
 
 export default function Home() {
   const [time, setTime] = useState("");
-  
+
   useEffect(() => {
     const tick = () => {
       const d = new Date();
-      setTime(d.toLocaleTimeString("en-IN", { 
-        hour: "2-digit", 
-        minute: "2-digit", 
-        second: "2-digit", 
-        hour12: false, 
-        timeZone: "Asia/Kolkata" 
+      setTime(d.toLocaleTimeString("en-IN", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+        timeZone: "Asia/Kolkata"
       }));
     };
-    tick(); 
-    const i = setInterval(tick, 1000); 
+    tick();
+    const i = setInterval(tick, 1000);
     return () => clearInterval(i);
   }, []);
 
@@ -36,18 +35,18 @@ export default function Home() {
         {/* Animated background elements */}
         <div className="absolute inset-0 grid-bg opacity-40 animate-grid" />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-accent/5 blur-[150px] animate-float pointer-events-none" />
-        
+
         <div className="relative max-w-7xl mx-auto w-full z-10">
           <div className="flex items-center gap-4 mb-12 font-mono text-[10px] uppercase tracking-[0.4em] text-muted-foreground animate-rise">
             <span className="w-2 h-2 rounded-full bg-accent animate-blink" />
-            <span>Studio · Est. 2026 · Bengaluru</span>
+            <span>Studio · Est. 2026 · Nashik</span>
             <span className="ml-auto hidden md:block select-none">IST {time}</span>
           </div>
 
           <h1 className="font-display font-black tracking-[-0.05em] leading-[0.82] text-[clamp(3.5rem,13vw,13rem)]">
             <span className="block animate-rise" style={{ animationDelay: "0.1s" }}>Software,</span>
             <span className="block animate-rise" style={{ animationDelay: "0.2s" }}>
-              pointed <span className="shimmer-text italic font-light">forward</span>
+              pointed <span className="shimmer-text italic font-light pr-10">forward</span>
             </span>
             <span className="block animate-rise text-stroke" style={{ animationDelay: "0.3s" }}>
               with intent.
@@ -60,23 +59,23 @@ export default function Home() {
                 We are <span className="text-foreground font-semibold">White Arrow</span> — a small studio engineering web, mobile and AI products for ambitious teams who refuse generic.
               </p>
             </Reveal>
-            
+
             <div className="flex flex-wrap gap-5 md:justify-end">
               <Reveal delay={500}>
                 <Magnetic>
-                  <Link 
-                    href="/contact" 
+                  <Link
+                    href="/contact"
                     className="group inline-flex items-center gap-4 px-10 py-5 rounded-full bg-foreground text-background font-bold hover:scale-105 active:scale-95 transition-all"
                   >
                     Start a project
-                    <svg viewBox="0 0 24 24" className="w-6 h-6 group-hover:translate-x-1.5 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 group-hover:translate-x-1.5 transition-transform duration-500" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                   </Link>
                 </Magnetic>
               </Reveal>
               <Reveal delay={600}>
                 <Magnetic>
-                  <Link 
-                    href="/work" 
+                  <Link
+                    href="/work"
                     className="inline-flex items-center gap-4 px-10 py-5 rounded-full border border-border hover:border-foreground hover:bg-foreground/5 transition-all font-bold"
                   >
                     See our work
@@ -90,7 +89,7 @@ export default function Home() {
         {/* Flying arrow animation */}
         <div className="absolute bottom-20 left-0 right-0 overflow-hidden h-16 opacity-30 pointer-events-none">
           <div className="flex animate-arrow-fly text-accent items-center justify-center">
-             <svg viewBox="0 0 120 24" className="w-48 h-16"><path d="M0 12h110M100 4l12 8-12 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round"/></svg>
+            <svg viewBox="0 0 120 24" className="w-48 h-16"><path d="M0 12h110M100 4l12 8-12 8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" /></svg>
           </div>
         </div>
       </section>
@@ -103,7 +102,7 @@ export default function Home() {
               {["Web Apps", "AI / LLM", "Mobile", "SaaS", "Cloud Systems"].map((s) => (
                 <span key={s} className="flex items-center gap-16">
                   <span className="text-stroke hover:text-foreground transition-all duration-700 cursor-default">{s}</span>
-                  <svg viewBox="0 0 24 24" className="w-10 h-10 text-accent opacity-50" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  <svg viewBox="0 0 24 24" className="w-10 h-10 text-accent opacity-50" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                 </span>
               ))}
             </div>
@@ -118,7 +117,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-32 gap-12">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-accent mb-6">[01] Capabilities</p>
-                <h2 className="font-display font-bold text-6xl md:text-8xl tracking-tight leading-[0.9]">What we<br/>engineer.</h2>
+                <h2 className="font-display font-bold text-6xl md:text-8xl tracking-tight leading-[0.9]">What we<br />engineer.</h2>
               </div>
               <p className="text-muted-foreground max-w-sm text-lg leading-relaxed border-l border-border pl-8 italic">
                 Four focused practices. Zero filler. Every engagement led by a senior engineer.
@@ -138,7 +137,7 @@ export default function Home() {
                   <div className="flex items-start justify-between mb-16">
                     <span className="font-mono text-xs text-muted-foreground opacity-50">{s.n} / 04</span>
                     <div className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-500">
-                        <svg viewBox="0 0 24 24" className="w-5 h-5 text-foreground group-hover:text-background transition-transform duration-500 group-hover:rotate-45" fill="none" stroke="currentColor" strokeWidth="3"><path d="M7 17L17 7M9 7h8v8"/></svg>
+                      <svg viewBox="0 0 24 24" className="w-5 h-5 text-foreground group-hover:text-background transition-transform duration-500 group-hover:rotate-45" fill="none" stroke="currentColor" strokeWidth="3"><path d="M7 17L17 7M9 7h8v8" /></svg>
                     </div>
                   </div>
                   <h3 className="font-display font-bold text-4xl lg:text-5xl tracking-tight mb-6 group-hover:text-accent transition-colors">{s.t}</h3>
@@ -161,7 +160,7 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto">
           <Reveal>
             <p className="font-mono text-[10px] uppercase tracking-[0.4em] text-accent mb-6">[02] Process</p>
-            <h2 className="font-display font-bold text-6xl md:text-8xl tracking-tight mb-32 leading-[0.9]">Four steps.<br/><span className="text-stroke">No drama.</span></h2>
+            <h2 className="font-display font-bold text-6xl md:text-8xl tracking-tight mb-32 leading-[0.9]">Four steps.<br /><span className="text-stroke">No drama.</span></h2>
           </Reveal>
 
           <div className="space-y-4">
@@ -179,7 +178,7 @@ export default function Home() {
                     <p className="text-muted-foreground text-lg max-w-md leading-relaxed">{p.d}</p>
                   </div>
                   <div className="w-16 h-16 rounded-full border border-border flex items-center justify-center group-hover:bg-accent group-hover:border-accent transition-all duration-700">
-                    <svg viewBox="0 0 24 24" className="w-6 h-6 text-foreground group-hover:text-background transition-all duration-700" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <svg viewBox="0 0 24 24" className="w-6 h-6 text-foreground group-hover:text-background transition-all duration-700" fill="none" stroke="currentColor" strokeWidth="3"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
                   </div>
                 </div>
               </Reveal>

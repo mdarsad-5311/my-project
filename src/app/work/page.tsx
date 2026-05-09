@@ -8,12 +8,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 const projects = [
-    { n: "01", year: "2026", title: "Helio Finance", cat: "FinTech · Web App", desc: "Realtime trading dashboard with sub-100ms render budget.", color: "oklch(0.78 0.18 75)" },
-    { n: "02", year: "2025", title: "Kavi LLM Studio", cat: "AI · SaaS", desc: "Multi-tenant prompt workbench with eval harness and RAG pipelines.", color: "oklch(0.7 0.2 200)" },
-    { n: "03", year: "2025", title: "Northwind OS", cat: "Enterprise · Platform", desc: "Internal tools platform for a 4,000-person logistics company.", color: "oklch(0.7 0.2 350)" },
-    { n: "04", year: "2025", title: "Folio Mobile", cat: "Mobile · iOS/Android", desc: "Cross-platform portfolio tracker with offline-first sync.", color: "oklch(0.78 0.18 140)" },
-    { n: "05", year: "2024", title: "Atlas Health", cat: "Healthcare · Web", desc: "Patient intake & telemedicine portal compliant with HIPAA.", color: "oklch(0.78 0.18 30)" },
-    { n: "06", year: "2024", title: "Mira Commerce", cat: "Retail · Headless", desc: "Headless commerce stack on edge runtime — 98 Lighthouse.", color: "oklch(0.7 0.2 280)" },
+    { n: "01", year: "2026", title: "Toga", cat: "Industrial · AI", desc: "Automated software used for monitoring and maintenance of Oil and Gas transformers.", color: "oklch(0.78 0.18 75)" },
+    { n: "02", year: "2026", title: "ScanSync", cat: "SaaS · Workflow", desc: "QR code based solution to seamlessly manage and track complex workflows.", color: "oklch(0.7 0.2 200)" },
+    { n: "03", year: "2025", title: "Hostnob", cat: "Web · Hosting", desc: "Premium hosting platform utilizing WHMCS API with custom development for domain and server purchasing.", color: "oklch(0.7 0.2 350)" },
 ];
 
 export default function WorkPage() {

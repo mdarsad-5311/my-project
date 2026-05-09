@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { Providers } from "@/components/Providers";
@@ -29,24 +29,47 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "White Arrow Softwares — Precision Software Studio",
-  description: "Bespoke software, engineered with precision. Small studio engineering web, mobile and AI products for ambitious teams.",
-  keywords: ["Software Studio", "Product Engineering", "AI Integration", "Next.js", "React Native", "Bengaluru"],
-  authors: [{ name: "White Arrow" }],
+  metadataBase: new URL("https://whitearrowsoftwares.in"),
+  title: {
+    default: "White Arrow Softwares | Precision Software Studio Nashik",
+    template: "%s | White Arrow Softwares"
+  },
+  description: "White Arrow is a premium software engineering studio based in Nashik, India. We build high-performance web, mobile, and AI solutions for global founders who refuse average.",
+  keywords: ["Software Studio Nashik", "Best IT Company Nashik", "AI Engineering India", "Product Development Studio", "Web Development Nashik", "Mobile App Development", "Remote Engineering Team"],
+  authors: [{ name: "White Arrow Softwares" }],
+  creator: "White Arrow Softwares",
+  publisher: "White Arrow Softwares",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   openGraph: {
-    title: "White Arrow Softwares — Precision Software Studio",
-    description: "Bespoke software, engineered with precision.",
-    url: "https://zest-animation-suite.lovable.app",
+    title: "White Arrow Softwares | Precision Software Studio",
+    description: "Bespoke software, engineered with precision. Small studio engineering web, mobile and AI products for ambitious teams.",
+    url: "https://whitearrowsoftwares.in",
     siteName: "White Arrow",
-    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "White Arrow Softwares Logo" }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "White Arrow Softwares",
-    description: "Precision Software Studio",
+    title: "White Arrow Softwares | Precision Software Studio",
+    description: "Bespoke software, engineered with precision in Nashik, India.",
     images: ["/og-image.png"],
+    creator: "@whitearrow",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -60,6 +83,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col bg-background text-foreground selection:bg-accent selection:text-background font-sans overflow-x-hidden">
         <Providers>

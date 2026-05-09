@@ -13,7 +13,7 @@ export default function NotFound() {
           <h1 className="font-display font-black text-9xl tracking-tighter text-accent">404</h1>
           <h2 className="mt-4 font-display font-bold text-3xl text-foreground">Arrow lost.</h2>
           <p className="mt-4 text-muted-foreground leading-relaxed">
-            The page you're looking for doesn't exist or has been moved to a new coordinate.
+            The page you&apos;re looking for doesn&apos;t exist or has been moved to a new coordinate.
           </p>
           <div className="mt-10">
             <Link
