@@ -2,7 +2,6 @@
 
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/Footer";
-import { ArrowCursor } from "../../components/ArrowCursor";
 import { Reveal } from "../../components/Reveal";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -25,7 +24,6 @@ export default function WorkPage() {
 
     return (
         <div className="min-h-screen bg-background text-foreground">
-            <ArrowCursor />
             <Nav />
 
             {/* HERO */}

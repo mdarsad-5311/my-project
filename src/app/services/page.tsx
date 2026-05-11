@@ -2,7 +2,6 @@
 
 import { Nav } from "../../components/Nav";
 import { Footer } from "../../components/Footer";
-import { ArrowCursor } from "../../components/ArrowCursor";
 import { Reveal } from "../../components/Reveal";
 import { useState } from "react";
 
@@ -46,7 +45,6 @@ export default function ServicesPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <ArrowCursor />
       <Nav />
 
       <section className="pt-52 pb-32 px-6 relative overflow-hidden">

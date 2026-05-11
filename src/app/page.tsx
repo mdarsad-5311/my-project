@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { Footer } from "../components/Footer";
-import { ArrowCursor } from "../components/ArrowCursor";
 import { Reveal } from "../components/Reveal";
 import { Magnetic } from "../components/Magnetic";
 import Link from "next/link";
@@ -28,8 +27,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <ArrowCursor />
-
       {/* HERO SECTION */}
       <section className="relative min-h-screen flex flex-col justify-center pt-32 pb-20 px-6 overflow-hidden">
         {/* Animated background elements */}

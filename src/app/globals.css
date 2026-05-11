@@ -122,7 +122,6 @@
 @layer base {
     * { 
         border-color: var(--color-border); 
-        cursor: none !important; /* Custom cursor handle */
     }
     html { 
         scroll-behavior: smooth; 
@@ -199,23 +198,6 @@
     .magnetic-wrap {
         display: inline-block;
         transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .arrow-cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 32px;
-        height: 32px;
-        background: white;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        mix-blend-mode: difference;
-        transition: width 0.3s, height 0.3s, background-color 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 
     .reveal-content {
